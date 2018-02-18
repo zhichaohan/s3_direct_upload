@@ -45,6 +45,8 @@ $.fn.S3Uploader = (options) ->
       add: (e, data) ->
         file = data.files[0]
         file.unique_id = Math.random().toString(36).substr(2,16)
+        # huge hack to get all files
+        window.all_files = $(data.fileInput[0]).context.files
 
         unless settings.before_add and not settings.before_add(file)
           current_files.push data
